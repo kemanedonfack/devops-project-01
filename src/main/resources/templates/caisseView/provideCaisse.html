@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Approvisionnement des caisses</h3>
+                                </div>
+                                <div class="add_button ml-10">
+                                     <a th:href="@{/}" class="btn_1">Historique des approvisionnements</a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                
+                                <div class="row">
+                                <div class="col-md-8">
+									<form action="#"  th:action="@{/insert_approvisionnement}" th:object="${approCaisse}" method="post">
+									<table class="table lms_table_active3 ">
+                                        <tbody>
+                                        	<tr>
+                                                <td>
+                                                	<div sec:authorize="hasAnyAuthority('admin')" class="form-group">
+					                                    <label for="exampleInputEmail1">Caisse</label>
+					                                	<select class="form-control" th:field="*{caisse}" required="required">
+															<option 
+																	th:each="c : ${caisses}" 
+										                            th:value="${c.idCaisse}"
+										                            th:utext="${c.libelle}"/>
+														</select>
+					                                </div>
+					                                
+					                                <div sec:authorize="hasAnyAuthority('USERDLA')" class="form-group">
+					                                	<label for="exampleInputEmail1">Caisse</label>
+					                                	
+					                                	<select class="form-control" th:field="*{caisse}" required="required">
+															<option 
+																	th:each="c : ${caisses}" 
+															        th:if="${c.codeCaisse == '571100'}" 
+										                            th:value="${c.idCaisse}"
+										                            th:utext="${c.libelle}"/>
+														</select>
+					                                </div>
+					                                
+					                                <div sec:authorize="hasAnyAuthority('USERYDE')" class="form-group">
+					                                	<label for="exampleInputEmail1">Caisse</label>
+					                                	
+					                                	<select class="form-control" th:field="*{caisse}" required="required">
+															<option 
+																	th:each="c : ${caisses}" 
+															        th:if="${c.codeCaisse == '571200'}" 
+										                            th:value="${c.idCaisse}"
+										                            th:utext="${c.libelle}"/>
+														</select>
+					                                </div>
+                                                </td>
+                                                <td>
+	                                                <div class="form-group">
+					                                    <label for="exampleInputEmail1">Gestionnaire</label>
+					                                	<select class="form-control" th:field="*{gestionnaireCaisse}" required="required">
+															<option th:each="g : ${gestionnaires}"
+															        th:if="${g.utilisateur == #authentication.name}"
+										                            th:value="${g.idGestionnaire}"
+										                            sec:authentication="name"
+										                            /></option>
+														</select>
+					                                </div>
+                                                </td>
+                                            </tr>
+											<tr>
+                                                <td>
+                                                	<div class="form-group">
+					                                    <label for="exampleInputEmail1" >Montant_approvisionner</label>
+					                                    <input type="number" class="form-control" th:field="*{montantApproCaisse}" placeholder="Montant à approvisionner" required>
+					                                </div>
+                                                </td>
+                                                <td>
+                                                	<div class="form-group">
+					                                    <label for="exampleInputEmail1" >Type d'approvisionnement</label>
+					                                    <select class="form-control" th:field="*{typeApprovisionnement}" required="required">
+					                                      <option value="">------------Type d'approvisionnement------------</option>
+													      <option value="Banque(Afriland)">Banque(Afriland)</option>
+													      <option value="Banque(SCB)">Banque(SCB)</option>
+													      <option value="DG(World Remit)">DG(World Remit)</option>
+													      <option value="DG(Espèces)">DG(Espèces)</option>
+													      <option value="DG(NAB)">DG(NAB)</option>
+													      <option value="Approvisionnement mobile">Approvisionnement mobile</option>
+													    </select>
+					                                </div>
+                                                </td>
+                                            </tr>    
+											<tr>
+                                                <td>
+                                                	<div class="form-group">
+					                                  	<button type="submit" class="btn btn-primary" onclick="return confirmerApprovisionnement();">Approvisionner la caisse</button>
+					                                </div>
+                                                </td>
+                                                <td>
+	                                                
+                                                </td>
+                                            </tr>                                              
+                                          </tbody>
+                                    </table>
+                                    	<br>
+		                                <br>
+		                                <br>
+		                            </form>
+		                            </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

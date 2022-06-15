@@ -1,0 +1,60 @@
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Ajouter une nouvelle caisse</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">
+                                    
+                                    <div class="box_right d-flex lms_block">
+                                        
+                                    </div>
+                                    
+                                    <div class="add_button ml-10">
+                                            <a th:href="@{/caisses}" class="btn_1">Listing des caisses</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-7">
+									<form action="#" th:action="@{/insert_caisse}" th:object="${caisse}" method="post">
+		                                <div class="form-group">
+		                                    <label for="nom">Nom de la caisse</label>
+		                                    <input type="text"  class="form-control" id="nom" aria-describedby="emailHelp" placeholder="" name="libelle" th:field="*{libelle}"/>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label for="motDePasse">Code de la caisse</label>
+		                                    <input type="text"  class="form-control" id="motDePasse" name="codeCaisse" aria-describedby="emailHelp" th:field="*{codeCaisse}" placeholder="">
+		                                </div>
+											<input type="hidden" class="form-control" th:field="*{isdeleted}"  th:value="0">
+		                                <br>
+		                                <button type="submit" class="btn btn-primary">Enregistrer cette caisse</button>
+		                                <br>
+		                                <br>
+		                            </form>
+		                            </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

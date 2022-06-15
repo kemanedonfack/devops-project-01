@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Modifier</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">  
+                                    
+                                    <div class="box_right d-flex lms_block">
+                                        
+                                    </div>
+                                    
+                                    <div class="add_button ml-10">
+                                            <a th:href="@{/caisses}" class="btn_1">Listing des caisses</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+									<form action="#"  th:action="@{/save_editCaisse}" th:object="${caisse}" method="post">
+										<input type="hidden" th:field="*{idCaisse}" name="idCaisse" readonly="readonly" />
+										
+		                                <div class="form-group">
+		                                    <label for="exampleInputEmail1">Caisse</label>
+		                                    <input type="text" class="form-control" name="libelle" th:field="*{libelle}" placeholder="Code de la caisse" required>
+		                                </div>
+		                                
+		                                <div class="form-group">
+		                                    <label for="codeCaisse" >Code de la caisse</label>
+		                                    <input type="text" class="form-control" name="codeCaisse" th:field="*{codeCaisse}" placeholder="Code de la caisse" required>
+		                                    
+		                                </div>                                                     
+		          
+		                                	<input type="hidden" class="form-control" th:field="*{isdeleted}"  th:value="0">
+		                                
+		                                <br>
+		                                <button type="submit" class="btn btn-primary">Enregistrer ce compte</button>
+		                                <br>
+		                                <br>
+		                            </form>
+		                            </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+<!--/ menu  -->
+<div class="main_content_iner ">
+	<div class="container-fluid p-0">
+		<div class="row justify-content-center">
+			<div class="col-lg-12">
+				<div class="white_card card_height_100 mb_30">
+
+					
+					<div class="white_card_header">
+						<div class="box_header m-0">
+							<div class="main-title">
+								<h3 class="m-0">DEPENSES (SORTIE DE CAISSE)</h3>
+							</div>
+							<div class="add_button ml-10">
+								<a th:href="@{/sortie_caisse}" class="btn_1">Nouvelle sortie
+									de caisse</a>
+							</div>
+							
+						</div>
+					</div>
+					<div class="white_card_body">
+						<div class="QA_section">
+							<div class="white_box_tittle list_header">
+								<div class="box_right d-flex lms_block">
+									<div class="serach_field_2">
+										<div class="search_inner">
+											<form Active="#" th:action="@{/historique_depenses_search}"
+												method="get">
+												<div class="search_field">
+													<input type="text" name="search" th:value="${search}"
+														placeholder="Recherche par utilisateur, par caisse, par gestionnaire">
+												</div>
+												<button type="submit">
+													<i class="ti-search"></i>
+												</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="QA_table mb_30">
+								<!-- table-responsive -->
+								<div class="alert alert-success" th:text="${success}"
+									th:if="${success}" role="alert"></div>
+								<div class="alert alert-danger" th:text="${error}"
+									th:if="${error}" role="alert"></div>
+								<table class="table lms_table_active3 ">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Code</th>
+											<th scope="col">Caisse</th>
+											<th scope="col">Gestionnaire</th>
+											<th scope="col">Demandeur</th>
+											<th scope="col">Beneficiaire</th>
+											<th scope="col">Montant</th>
+											<th scope="col">motif</th>
+											<th scope="col">Code comptable</th>
+											<th scope="col">Date de l'operation</th>
+											<th scope="col">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:if="${depenses.empty}">
+											<td colspan="9">Aucune depense disponible actuellement
+												...</td>
+										</tr>
+										<tr th:each="d,i : ${depenses}" th:if="${d.caisse.codeCaisse == '571200'}" sec:authorize="hasAnyAuthority('admin','USERYDE')">
+											<td><span th:text="${i.count}"> 1 </span></td>
+											<td><span th:text="${d.caisse.codeCaisse}"> </span></td>
+											<td><span th:text="${d.caisse.libelle}"> </span></td>
+											<td><span th:text="${d.GestionnaireCaisse.utilisateur}">
+											</span></td>
+											<td><span th:text="${d.personnel.nom}"> </span></td>
+											<td><span th:text="${d.beneficiaire}"> </span></td>
+											<td><span th:text="${d.montant}"> </span></td>
+											<td><span th:text="${d.motif}"> </span></td>
+											<td><span th:text="${d.imputationComptable}"> </span></td>
+											<td><span
+												th:text="${#temporals.format(d.dateDepense, 'dd-MM-yyyy HH:mm')}">
+											</span></td>
+											<td>
+											<a href="#" th:href="@{'edit_sortiecaisse/'+${d.idDepense}}"><i class="fa fa-edit"></i></a>
+                                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                	<a href="#" th:href="@{'delete_sortiecaisse/'+${d.idDepense}}" onclick="confirmer()"><i class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+										
+										<tr th:each="d,i : ${depenses}" th:if="${d.caisse.codeCaisse == '571100'}" sec:authorize="hasAnyAuthority('admin','USERDLA')">
+											<td><span th:text="${i.count}"> 1 </span></td>
+											<td><span th:text="${d.caisse.codeCaisse}"> </span></td>
+											<td><span th:text="${d.caisse.libelle}"> </span></td>
+											<td><span th:text="${d.GestionnaireCaisse.utilisateur}">
+											</span></td>
+											<td><span th:text="${d.personnel.nom}"> </span></td>
+											<td><span th:text="${d.beneficiaire}"> </span></td>
+											<td><span th:text="${d.montant}"> </span></td>
+											<td><span th:text="${d.motif}"> </span></td>
+											<td><span th:text="${d.imputationComptable}"> </span></td>
+											<td><span
+												th:text="${#temporals.format(d.dateDepense, 'dd-MM-yyyy HH:mm')}">
+											</span></td>
+											<td>
+											<a href="#" th:href="@{'edit_sortiecaisse/'+${d.idDepense}}"><i class="fa fa-edit"></i></a>
+                                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                	<a href="#" th:href="@{'delete_sortiecaisse/'+${d.idDepense}}" onclick="return confirmer();"><i class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<div sec:authorize="hasAnyAuthority('admin')" class="add_button ml-10">
+								<a th:href="@{/historique_depense_report}"><i class="fa fa-file-excel" style="font-size:50px;color:green"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- footer part -->
+<div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

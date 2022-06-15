@@ -1,0 +1,84 @@
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Ajouter un nouveau gestionnaire</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">
+                                    
+                                    <div class="box_right d-flex lms_block">
+                                        
+                                    </div>
+                                    
+                                    <div class="add_button ml-10">
+                                            <a th:href="@{/gestionnaire}" class="btn_1">Listing des gestionnaires</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-7">
+									<form th:action="@{/gestionnaire/add}" method="post" th:object="${gestionnaireCaisse}">
+										<div class="form-group">
+		                                    <label for="role">Caisse</label>
+		                                    <select class="form-control" th:field="*{caisse}" name="caisse">
+		                                    	<option th:each="c : ${caisses}"
+										                th:value="${c.idCaisse}"
+										                th:utext="${c.libelle}"/>
+		                                    </select>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label for="nom">Email de l'utilisateur</label>
+		                                    <input type="email" class="form-control" id="nom" th:field="*{utilisateur}" placeholder="ex: admin" name="utilisateur"/>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label for="role">Role</label>
+		                                    <select class="form-control" th:field="*{role}" id="role" name="role">
+		                                    	<option th:value="admin" th:text="ADMIN" />
+		                                    	<option th:value="USERYDE" th:text="USERYDE" />
+		                                    	<option th:value="USERDLA" th:text="USERDLA" />
+		                                    </select>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label for="motDePasse">Mot de passe</label>
+		                                    <input type="password" class="form-control" id="password" onkeyup="return passwordChanged();"  name="password" th:field="*{password}" placeholder="Saississez le mot de passe du gestionnaire">
+		                                	<span id="strength"></span>
+		                                </div>
+		                                
+		                                <div class="form-group">
+											<label for="exampleInputEmail1">Confirmation du mot de passe</label>
+											<input type="password" id="passwordconfirm"
+												placeholder="******************"
+												class="form-control" onkeyup="return Validate();"><br/>
+												<span id="message"></span>
+										</div>
+		                                <br>
+		                                <button type="submit" id="monbtn" class="btn btn-primary">Enregistrer un nouveau gestionnaire de caisse</button>
+		                                <br>
+		                                <br>
+		                            </form>
+		                            </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

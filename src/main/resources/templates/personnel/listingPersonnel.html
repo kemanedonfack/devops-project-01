@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Personnel</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">
+                                    
+                                    <div class="box_right d-flex lms_block">
+                                        <div class="serach_field_2">
+                                            <div class="search_inner">
+                                                <form Active="#" th:action="@{/personnel_search}" method="get">
+                                                    <div class="search_field">
+                                                        <input type="text" name="motCle" th:value="${motCle}" placeholder="Search content here...">
+                                                    </div>
+                                                    <button type="submit"> <i class="ti-search"></i> </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!--<div class="add_button ml-10">
+                                            <a href="#" data-toggle="modal" data-target="#addcategory" class="btn_3">Search</a>
+                                        </div>-->
+                                    </div>
+                                    
+                                    <div class="add_button ml-10">
+                                            <a href="#" th:href="@{add_personnel}" class="btn_1">Nouveau personnel</a>
+                                    </div>
+                                </div>
+        
+                                <div class="QA_table mb_30">
+                                    <!-- table-responsive -->
+                                    <div class="alert alert-success" th:text="${success}"
+										th:if="${success}" role="alert"></div>
+                                    <table class="table lms_table_active3 ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col"></th>
+                                                <th scope="col">personnel</th>
+                                                <th scope="col">Departement</th>
+                                                <th scope="col">Contact information</th>
+                                                <th scope="col">Surcussale</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	<tr th:if="${personnels.empty}">
+                                                <td colspan="5">Aucune information disponible actuellement ...</td>
+                                                
+                                            </tr>
+                                            <tr th:each="p,i : ${personnels}">
+                                                <td><span th:text="${i.count}">  </span></td>
+                                                <td><i class="fa fa-user"></i></td>
+                                                <td><span th:text="${p.nom}">  </span></td>
+                                                <td><span th:text="${p.service}">  </span></td>
+                                                <td><span th:text="${p.contactInfo}">  </span></td>
+                                                <td><span th:text="${p.surcussale}"></span></td>
+                                                <td>
+                                                	<a sec:authorize="hasAnyAuthority('admin')" href="#" th:href="@{'edit_personnel/'+${p.idPersonnel}}"><i class="fa fa-edit"></i></a>
+                                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                	<a sec:authorize="hasAnyAuthority('admin')" href="#" th:href="@{'deletePersonnel/'+${p.idPersonnel}}" onclick="return confirmer();"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

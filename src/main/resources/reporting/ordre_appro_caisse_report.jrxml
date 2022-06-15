@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1508ba3-1bf6-4157-8245-db3e98050f91">
+	<parameter name="CollectionBeanParam" class="java.util.Map"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="montant" class="java.lang.Integer"/>
+	<field name="employe" class="java.lang.String"/>
+	<field name="montant_lettre" class="java.lang.String"/>
+	<field name="caisier" class="java.lang.String"/>
+	<field name="Motif" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="182" y="30" width="190" height="20" uuid="fbe97bd1-8b03-47d6-b929-7e8106ed92b6"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ORDRE APPROVISIONNEMENT CAISSE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="60" width="18" height="21" uuid="009c72bc-be2e-4e3a-a3d6-b7e201800138"/>
+				<text><![CDATA[N°: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="226" y="60" width="120" height="24" uuid="67b8d304-e163-4b62-94c3-534fe27facb5"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("numeroPiece")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="0" width="504" height="20" uuid="be6bc7dd-aa3b-4d15-8790-15c68b02f491"/>
+				<text><![CDATA[AMH CONSULTING GROUP, BP : 3615 Douala, RC : RC/DLA/2016/B/1804, NIU : M081612567098Q]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="490" y="20" width="46" height="19" uuid="b31a2291-9e68-4242-a9df-1a333eb45a9d"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CFA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="20" width="59" height="30" uuid="e3945471-0529-4cc5-b471-5736c70be657"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("montant")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="350" y="20" width="70" height="18" uuid="9bacd6ba-bbc3-4f9c-a58b-c12fc0a6a2dd"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Montant : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="20" width="130" height="24" uuid="b5daa5ee-d98b-4475-ace5-422a84373e54"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("dateEnregistrement")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-3" y="20" width="63" height="18" uuid="68a5baba-378e-41bf-8789-0202c63a6b75"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="260" splitType="Stretch">
+			<staticText>
+				<reportElement x="-2" y="40" width="101" height="21" uuid="a7ceb082-3e58-4426-8dee-b1049e0cadfb"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[La somme de FCFA :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="80" width="101" height="21" uuid="cb8dab15-e267-4ef2-8cec-e01e2fb371ff"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Motifs]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="117" y="130" width="114" height="82" uuid="2b0fb3c2-4447-4f11-8033-408270b32562"/>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="15" y="0" width="95" height="20" uuid="7a3a6b1d-dc91-4efb-b82c-2028e72c3527"/>
+					<text><![CDATA[Bon pour accord]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="20" width="110" height="1" uuid="4e8b06fd-9878-4d13-ab57-d5d84c4bbebc"/>
+				</line>
+				<staticText>
+					<reportElement x="1" y="62" width="46" height="19" uuid="fd2fba52-da3e-4f6c-b3ae-3b0ad4a7beae"/>
+					<textElement>
+						<font isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="231" y="130" width="106" height="82" uuid="bb86435f-1f50-427a-8f17-602f0cece256"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<line>
+					<reportElement x="0" y="20" width="106" height="1" uuid="65358563-f13f-46c9-8225-b1e0514d8b2b"/>
+				</line>
+				<staticText>
+					<reportElement x="5" y="0" width="85" height="20" uuid="cd0ee1f8-bf86-4fa2-ac5f-14817f340b38"/>
+					<text><![CDATA[Bon à  payer]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="61" width="46" height="19" uuid="3f45db8d-5ffd-4315-9785-79d79c7750ec"/>
+					<textElement>
+						<font isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="339" y="130" width="104" height="82" uuid="2360df7c-ebfc-4d06-b8ad-baff376deee9"/>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<line>
+					<reportElement x="1" y="20" width="98" height="1" uuid="87844e26-c709-47a6-9ad8-1c304f3704d9"/>
+				</line>
+				<staticText>
+					<reportElement x="5" y="0" width="85" height="20" uuid="4854cde3-22bb-413c-9dd1-30fafc350f8c"/>
+					<text><![CDATA[Bénéficiaire]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="61" width="46" height="19" uuid="8602ab4f-184f-4b73-88fa-10998d572bc9"/>
+					<textElement>
+						<font isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="443" y="130" width="110" height="81" uuid="eee61392-b3fb-4153-8f35-ba75d2e7193a"/>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<line>
+					<reportElement x="0" y="20" width="108" height="1" uuid="a21304f1-3e29-49f3-8d17-e3918436e874"/>
+				</line>
+				<staticText>
+					<reportElement x="5" y="0" width="85" height="20" uuid="a17958d1-200e-4191-96e7-70d789d10b7f"/>
+					<text><![CDATA[Direction générale]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-2" y="62" width="46" height="19" uuid="70b56cfd-cb65-4e66-9528-088fe384dffc"/>
+					<textElement>
+						<font isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement x="158" y="40" width="71" height="30" uuid="8f8d0fb1-8f2c-4dc0-ad18-57d5240fc9e2"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("montant")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="80" width="384" height="40" uuid="74f18a3a-a09b-42a8-9c33-89623d174618"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("motif")]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="-1" y="130" width="119" height="82" uuid="876d0c49-4aff-450d-81cf-496bea2f652c"/>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<line>
+					<reportElement x="1" y="20" width="116" height="1" uuid="110dfee4-0515-4dd8-8535-bb9a10f23303"/>
+				</line>
+				<staticText>
+					<reportElement x="22" y="2" width="85" height="20" uuid="864b3e04-0aaf-4189-afe1-999d561cdfec"/>
+					<text><![CDATA[Demandeur]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="62" width="46" height="19" uuid="e2dd8f07-8158-4038-83ae-14ab27ac2fac"/>
+					<textElement>
+						<font isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Signature]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="1" y="221" width="150" height="20" uuid="82c9529f-5e16-4ba6-8821-a46c3fb7f803">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NB: joindre justificatifs de la demande]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="220" width="212" height="20" uuid="6c09f269-3779-4928-afe3-a4619f0ad19d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[tel: 699970370  email: contact@amhconsulting-group.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="41" width="46" height="19" uuid="3820305f-a7b3-442c-ab5e-979eafeac074"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-5" y="10" width="112" height="21" uuid="230fa2b7-4ad5-48f3-b740-2249e9b220d6"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Approvisionné par :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="10" width="300" height="30" uuid="e61fb6ef-4c56-4067-b2ec-7eb14b794c34"/>
+				<textFieldExpression><![CDATA[$P{CollectionBeanParam}.get("employe")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="202" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="64" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

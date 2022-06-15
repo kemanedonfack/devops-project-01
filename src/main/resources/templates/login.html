@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CAISSE AMH</title>
+
+    <link rel="icon" th:href="@{/img/mini_logo.png}" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <!-- themefy CSS -->
+    <link rel="stylesheet" th:href="@{/vendors/themefy_icon/themify-icons.css}" />
+    <!-- select2 CSS -->
+    <link rel="stylesheet" th:href="@{/vendors/niceselect/css/nice-select.css}" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" th:href="@{/vendors/owl_carousel/css/owl.carousel.css}" />
+    <!-- gijgo css -->
+    <link rel="stylesheet" th:href="@{/vendors/gijgo/gijgo.min.css}" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" th:href="@{/vendors/font_awesome/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/vendors/tagsinput/tagsinput.css}" />
+
+    <!-- date picker -->
+    <link rel="stylesheet" th:href="@{/vendors/datepicker/date-picker.css}" />
+    <link rel="stylesheet" th:href="@{/vendors/vectormap-home/vectormap-2.0.2.css}" />
+
+     <!-- scrollabe  -->
+    <link rel="stylesheet" th:href="@{/vendors/tagsinput/tagsinput.css}" />
+    <link rel="stylesheet" th:href="@{/vendors/scroll/scrollable.css}" />
+    
+    <!-- datatable CSS -->
+    <link rel="stylesheet" th:href="@{/vendors/datatable/css/jquery.dataTables.min.css}" />
+    <link rel="stylesheet" th:href="@{/vendors/datatable/css/responsive.dataTables.min.css}" />
+    <link rel="stylesheet" th:href="@{/vendors/datatable/css/buttons.dataTables.min.css}" />
+    
+    <link rel="stylesheet" th:href="@{/vendors/text_editor/summernote-bs4.css}" />
+    
+    <!-- morris css -->
+    <link rel="stylesheet" th:href="@{/vendors/morris/morris.css}" />
+    
+    <!-- metarial icon css -->
+    <link rel="stylesheet" th:href="@{/vendors/material_icon/material-icons.css}" />
+
+    <!-- menu css  -->
+    <link rel="stylesheet" th:href="@{/css/metisMenu.css}" />
+
+    <!-- style CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/colors/default.css}" id="colorSkinCSS"/>
+</head>
+<body class="crm_body_bg">
+       
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+		<br><br><br><br><br>
+		<div class="text-center">
+        </div>
+		<h3 class="text-center">AMH CONSULTING GROUP | APPLICATION DE GESTION ET DE SUIVI DE LA CAISSE</h3>
+        <br><br><br><br>
+                <div class="col-lg-12">
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+
+                            <div class="col-lg-3">
+                                <!-- sign_in  -->
+                                <div class="modal-content cs_modal">
+                                    <div class="modal-header justify-content-center theme_bg_1">
+                                        <h5 class="modal-title text_white">Connexion</h5>
+                                    </div>
+                                    <div class="modal-body">
+		                                    <div class="justify-content-center">
+		                                        <img th:src="@{/img/zencaisse_logo.png}" width="150px" heigth="150px" alt="" class="rounded mx-auto d-block">
+		                                    </div>
+                                    		<br/>
+											<div class="alert text-white bg-danger" th:if="${param.error}"
+											     th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+											    Reason: <span  th:text="${errorMsg}">Wrong input!</span>
+											</div>
+											                                        
+											<form th:action="@{/login}" method=post>
+                                            <div class="form-group row">
+                                            	<label class="col-sm-2 col-form-label"><i class="fa fa-user fa-2x"></i></label>
+											    <div class="col-sm-10">
+												<input type="email" class="form-control" name="username" placeholder="Username" required>											    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                            	<label class="col-sm-2 col-form-label"><i class="fa fa-lock fa-2x"></i></label>
+											    <div class="col-sm-10">
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                            </div>
+                                          
+                                            <button type="submit" class="btn_1 full_width text-center">Se connecter</button>
+                                            
+                                        	</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+<div class="footer_part">
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+</div>
+
+  <!-- footer  -->
+  <!-- jquery slim -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="js/popper.min.js"></script>
+  <!-- bootstarp js -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- sidebar menu  -->
+  <script src="js/metisMenu.js"></script>
+  
+  <!-- scrollabe  -->
+  <script src="vendors/scroll/perfect-scrollbar.min.js"></script>
+  <script src="vendors/scroll/scrollable-custom.js"></script>
+  
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  </body>
+  
+</html>

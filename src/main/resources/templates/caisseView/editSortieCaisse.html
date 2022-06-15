@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Sortie de caisse</h3>
+                                </div>
+                                <div class="add_button ml-10">
+	                                            <a th:href="@{/historique_depenses}" class="btn_2">Historique des sorties de caisses</a>
+	                            </div>
+                            </div>
+                            
+                            <hr>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">  
+                                    
+                                    <div class="box_right d-flex lms_block">
+                                        
+                                    </div>
+                                  
+                                </div>
+                                <div class="row">
+                                <div class="col-md-7">
+									<form action="#"  th:action="@{/update_sortiecaisse}" th:object="${depense}" method="post">	
+										<input type="hidden" th:field="*{idDepense}" name="idDepense" readonly="readonly" />			
+									<table class="table lms_table_active3 ">
+                                        <tbody>
+                                        	<tr>
+                                                <td>
+                                                	<div class="form-group">
+					                                    <label for="exampleInputEmail1">Caisse</label>
+					                                	<select class="form-control" th:field="*{caisse}" required="required">
+															<option th:each="c : ${caisse}"
+										                            th:value="${c.idCaisse}"
+										                            th:utext="${c.libelle}"/>
+														</select>
+					                                </div>
+                                                </td>
+                                                <td>
+	                                                <div class="form-group">
+					                                    <label for="exampleInputEmail1">Gestionnaire de la caisse</label>
+					                                	<select class="form-control" th:field="*{gestionnaireCaisse}" required="required">
+															<option th:each="g : ${gestionnaire}"
+										                            th:value="${g.idGestionnaire}"
+										                            th:utext="${g.utilisateur}"/>
+														</select>
+					                                </div>
+                                                </td>
+                                            </tr>
+											<tr>
+												<td>
+	                                                <div class="form-group">
+					                                    <label for="exampleInputEmail1">Demandeur</label>
+					                                	<select class="form-control" th:field="*{personnel}" required="required">
+															<option th:each="p : ${personnel}"
+										                            th:value="${p.idPersonnel}"
+										                            th:utext="${p.nom}"/>
+														</select>
+					                                </div>
+                                                </td>
+                                                <td>
+                                                	<div class="form-group">
+					                                    <label for="exampleInputEmail1" >Montant sorti de la caisse</label>
+					                                    <input type="number" class="form-control" th:field="*{montant}" placeholder="Montant sorti de la caisse" required>
+					                                </div>
+                                                </td>                                               
+                                            </tr>
+                                            <tr>
+                                                <td>
+	                                                <div class="form-group">
+					                                    <label for="exampleInputEmail1" >Beneficiaire</label>
+					                                    <input type="text" class="form-control" th:field="*{beneficiaire}" placeholder="Beneficiaire" required>
+					                                </div>
+                                                </td>
+                                                 <td>
+                                                	<div class="form-group">
+					                                    <label for="exampleInputEmail1" >Imputation Comptable</label>
+														<select class="form-control" th:field="*{imputationComptable}" required="required">
+															  <option value="Non saisi">-----------Code comptable-----------</option>
+															  <option value="xxxxxxx">Autres</option>
+														      <option value="618100">618100 Voyages et deplacements</option>
+														      <option value="614000">614000 Transport du personnel</option>
+														      <option value="601000">601000 Achat de marchandises</option>
+														      <option value="604100">604100 Achat de consommables</option>
+														      <option value="605000">605000 Autres achats (factures eau - electricite)</option>
+														</select>					                                
+													</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+	                                                <div class="form-group">
+					                                    <label for="exampleInputEmail1" >Motif</label>
+					                                    <textarea class="form-control" th:field="*{motif}" placeholder="Motif" rows="8" cols="60" required></textarea>
+					                                </div>
+                                                </td>
+                                                <td>
+	                                                <input type="hidden" class="form-control" th:field="*{isdeleted}"  th:value="0">
+                                                </td>
+                                            </tr>          
+											<tr>
+                                                <td>
+                                                	<div class="form-group">
+					                                  	<button type="submit" class="btn btn-primary">Valider la modification de la sortie de caisse</button>
+
+					                                </div>
+                                                </td>
+                                                <td>
+	                                                
+                                                </td>
+                                            </tr>                                              
+                                          </tbody>
+                                    </table>
+                                    
+		                                <br>
+		                                <br>
+		                            </form>
+		                            </div>
+		                                                         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+    <div th:replace="layouts/footer :: footer"></div>
+
+
+</body>

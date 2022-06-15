@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<div th:replace="layouts/header :: header"></div>
+
+    <!--/ menu  -->
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Historique des approvisionnements</h3>
+                                </div>
+                                <div class="add_button ml-10">
+                                            <a th:href="@{/add_approvisionnement}" class="btn_1">Nouvel approvisionnement</a>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <div class="QA_section">
+                                <div class="white_box_tittle list_header">
+                                    
+                                </div>
+        
+                                <div class="QA_table mb_30">
+                                    <!-- table-responsive -->
+                                    <div class="alert alert-success" th:text="${success}"
+										th:if="${success}" role="alert"></div>
+									<div class="alert alert-danger" th:text="${error}" th:if="${error}"
+										role="alert"></div>
+                                    <table class="table lms_table_active3 ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Code</th>
+                                                <th scope="col">Caisse</th>
+                                                <th scope="col">Gestionnaire</th>
+                                                <th scope="col">Dernier solde</th>
+                                                <th scope="col">Approvisionnement</th>
+                                                <th scope="col">Nouveau solde en caisse</th>
+                                                <th scope="col">Date d'approvisionnement</th>
+                                                <th scope="col">Moyen d'approvisionnement</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	<tr th:if="${historiqueAppro.empty}">
+                                                <td colspan="5">Aucun approvisionnement disponible actuellement ...</td>
+                                            </tr>
+                                            <tr th:each="h,i : ${historiqueAppro}" th:if="${h.caisse.codeCaisse == '571200'}" sec:authorize="hasAnyAuthority('admin','USERYDE')">
+                                            	<td><span th:text="${i.count}"> 1 </span></td>
+                                            	<td><span th:text="${h.caisse.codeCaisse}">  </span></td>
+                                                <td><span th:text="${h.caisse.libelle}">  </span></td>
+                                                <td><span th:text="${h.gestionnaireCaisse.utilisateur}">  </span></td>
+                                                <td><span th:text="${h.lastMontantCaisse}"> FCFA </span></td>
+                                                <td><span th:text="${h.montantApproCaisse}">  </span></td>
+                                                <td><span th:text="${h.montantApproCaisse+h.lastMontantCaisse}">  </span></td>
+                                                <td><span th:text="${#temporals.format(h.dateApprovisionnement, 'dd-MM-yyyy HH:mm')}">  </span></td>
+                                                <td><span th:text="${h.typeApprovisionnement}">  </span></td>
+                                                <td>
+                                                	
+                                                	<a th:href="@{'delete_appro/'+${h.idApprovisionnement}}" onclick="return confirmerAnuleAppro();"><i class="fa fa-trash"></i></a>
+                                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<a th:href="@{'print_appro_caise/'+${h.idApprovisionnement}}"><i
+													class="fa fa-print"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr th:each="h,i : ${historiqueAppro}" th:if="${h.caisse.codeCaisse == '571100'}" sec:authorize="hasAnyAuthority('admin','USERDLA')">
+                                            	<td><span th:text="${i.count}"> 1 </span></td>
+                                            	<td><span th:text="${h.caisse.codeCaisse}">  </span></td>
+                                                <td><span th:text="${h.caisse.libelle}">  </span></td>
+                                                <td><span th:text="${h.gestionnaireCaisse.utilisateur}">  </span></td>
+                                                <td><span th:text="${h.lastMontantCaisse}"> FCFA </span></td>
+                                                <td><span th:text="${h.montantApproCaisse}">  </span></td>
+                                                <td><span th:text="${h.montantApproCaisse+h.lastMontantCaisse}">  </span></td>
+                                                <td><span th:text="${#temporals.format(h.dateApprovisionnement, 'dd-MM-yyyy HH:mm')}">  </span></td>
+                                                <td><span th:text="${h.typeApprovisionnement}">  </span></td>
+                                                <td>
+                                                	<a th:href="@{'delete_appro/'+${h.idApprovisionnement}}" onclick="confirmerAnuleAppro()"><i class="fa fa-trash"></i></a>
+                                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<a th:href="@{'print_appro_caise/'+${h.idApprovisionnement}}" target="_blank"><i
+													class="fa fa-print"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- footer part -->
+<div th:replace="layouts/footer :: footer"></div>
+
+</body>

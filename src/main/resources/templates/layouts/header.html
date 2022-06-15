@@ -1,0 +1,209 @@
+<header th:fragment="header">
+	<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>ZENCAISSE</title>
+
+<link rel="icon" th:href="@{/img/mini_logo.png}" type="image/png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<!-- themefy CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendors/themefy_icon/themify-icons.css}" />
+<!-- select2 CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendors/niceselect/css/nice-select.css}" />
+<!-- owl carousel CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendors/owl_carousel/css/owl.carousel.css}" />
+<!-- gijgo css -->
+<link rel="stylesheet" th:href="@{/vendors/gijgo/gijgo.min.css}" />
+<!-- font awesome CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendors/font_awesome/css/all.min.css}" />
+<link rel="stylesheet" th:href="@{/vendors/tagsinput/tagsinput.css}" />
+<!-- date picker -->
+<link rel="stylesheet" th:href="@{/vendors/datepicker/date-picker.css}" />
+<link rel="stylesheet"
+	th:href="@{/vendors/vectormap-home/vectormap-2.0.2.css}" />
+
+<!-- scrollabe  -->
+<link rel="stylesheet" th:href="@{/vendors/tagsinput/tagsinput.css}" />
+<link rel="stylesheet" th:href="@{/vendors/scroll/scrollable.css}" />
+
+<!-- datatable CSS -->
+<link rel="stylesheet"
+	th:href="@{/vendors/datatable/css/jquery.dataTables.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/vendors/datatable/css/responsive.dataTables.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/vendors/datatable/css/buttons.dataTables.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/vendors/text_editor/summernote-bs4.css}" />
+
+<!-- morris css -->
+<link rel="stylesheet" th:href="@{/vendors/morris/morris.css}" />
+
+<!-- metarial icon css -->
+<link rel="stylesheet"
+	th:href="@{/vendors/material_icon/material-icons.css}" />
+
+<!-- menu css  -->
+<link rel="stylesheet" th:href="@{/css/metisMenu.css}" />
+
+<!-- style CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/colors/default.css}"
+	id="colorSkinCSS" />
+
+</head>
+<!-- main content part here -->
+<!-- sidebar  -->
+<body class="crm_body_bg">
+	<nav class="sidebar dark_sidebar">
+		<div class="logo d-flex justify-content-between">
+			<a th:href="@{/}" aria-expanded="false">
+				<div class="nav_title">
+					<h4 style="color: white;">
+						<img th:src="@{/img/zencaisse_logowhite.png}" alt="" width="170px" height="100px">
+					</h4>
+				</div>
+			</a>
+		</div>
+		<ul id="sidebar_menu">
+			<li class=""><a th:href="@{/}" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{../img/menu-icon/1.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Dashboard</span>
+					</div>
+			</a></li>
+
+			<li class=""><a class="has-arrow" href="#" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{/img/menu-icon/2.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Caisse</span>
+					</div>
+			</a>
+				<ul>
+					<li><a th:href="@{/caisses}">Liste des caisses </a></li>
+					<li><a th:href="@{/historique_depenses}">Ordre de paiement</a></li>
+					<li><a th:href="@{/pieces_caisses}">Pièces de Caisse</a></li>
+				</ul></li>
+			<li class=""><a class="has-arrow" href="#" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{/img/menu-icon/3.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Approvisionnement</span>
+					</div>
+			</a>
+				<ul>
+					<li><a th:href="@{/add_approvisionnement}">Ordre
+							d'approvisionnement</a></li>
+					<li><a th:href="@{/historique_approvisionnement}">Historique
+							Approvisionnement</a></li>
+
+				</ul></li>
+			<li class=""><a th:href="@{/personnel}" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{/img/menu-icon/4.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Personnel</span>
+					</div>
+			</a></li>
+
+			<li class=""><a sec:authorize="hasAnyAuthority('admin')"
+				th:href="@{/gestionnaire}" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{/img/menu-icon/5.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Gestionnaire de caisse</span>
+					</div>
+			</a></li>
+
+			<li class=""><a class="has-arrow" href="#" aria-expanded="false">
+					<div class="nav_icon_small">
+						<img th:src="@{/img/menu-icon/7.svg}" alt="">
+					</div>
+					<div class="nav_title">
+						<span>Aide</span>
+					</div>
+			</a>
+				<ul>
+					<li><a th:href="@{/support}">Support</a></li>
+				</ul></li>
+
+		</ul>
+	</nav>
+	<!--/ sidebar  -->
+
+
+	<section class="main_content dashboard_part large_header_bg">
+		<!-- menu  -->
+		<div class="container-fluid no-gutters">
+			<div class="row">
+				<div class="col-lg-12 p-0 ">
+					<div
+						class="header_iner d-flex justify-content-between align-items-center">
+						<div class="sidebar_icon d-lg-none">
+							<i class="ti-menu"></i>
+
+						</div>
+						<div class="line_icon open_miniSide d-none d-lg-block">
+							<img th:src="@{../img/line_img.png}" alt="">
+						</div>
+						<div
+							class="header_right d-flex justify-content-between align-items-center">
+
+							<div class="profile_info d-flex align-items-center">
+								<div class="profile_thumb mr_20">
+									<img th:src="@{/img/iconAMH.png}" alt="">
+								</div>
+								<div class="author_name" sec:authorize="isAuthenticated()">
+									<h3 class="f_s_15 f_w_500 mb-0">
+										<span sec:authentication="name"></span>
+									</h3>
+									<p>
+										Role : <span sec:authentication="principal.authorities"></span>
+									</p>
+								</div>
+								<div class="profile_info_iner">
+									<a th:href="@{/gestionnaire_updatepassword}">
+										<div class="profile_author_name">
+											<p>
+												<span sec:authentication="name"></span>
+											</p>
+											<p>
+												Role : <span sec:authentication="principal.authorities"></span>
+											</p>
+											<br/>
+											<p>
+												<span>Modifier votre profil</span>
+											</p>
+										</div>
+									</a>
+
+									<div class="profile_info_details">
+										<a th:href="@{/logout}">Deconnexion</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ menu  -->

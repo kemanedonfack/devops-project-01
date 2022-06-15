@@ -1,0 +1,187 @@
+<!-- footer part -->
+<footer th:fragment="footer">
+	<div class="footer_part">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="footer_iner text-center">
+						<p>2021 | AMH Consulting Group - Application de Gestion de la
+							Caisse</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- main content part end -->
+
+	<div id="back-top" style="display: none;">
+		<a title="Go to Top" href="#"> <i class="ti-angle-up"></i>
+		</a>
+	</div>
+
+	<script>
+		function confirmer() {
+			if (confirm("voulez vous vraiment supprimer cette valeur ?")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+	
+	<script>
+		function confirmerAnuleAppro() {
+			if (confirm("Vous avez fait une erreur.Voulez vous vraiment annuler cet apprivisionnement de la caisse ?")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+	
+
+	<script>
+		function confirmerApprovisionnement() {
+			if (confirm("Vous allez approvisionner une caisse. Veuillez confirmer cette operation s'il vous plait ?")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+
+	<script>
+		function confirmerSortiedeCaisse() {
+			if (confirm("Vous allez faire une sortie de cette caisse. Veuillez confirmer cette operation s'il vous plait ?")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		function passwordChanged() {
+			var strength = document.getElementById('strength');
+			var strongRegex = new RegExp(
+					"^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$",
+					"g");
+			var mediumRegex = new RegExp(
+					"^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$",
+					"g");
+			var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+			var pwd = document.getElementById("password");
+			if (pwd.value.length == 0) {
+				strength.innerHTML = 'Saisissez votre mot de passe...';
+			} else if (false == enoughRegex.test(pwd.value)) {
+				strength.innerHTML = '<div class="alert alert-danger" role="alert">Plus de lettres pour un meilleur mot de passe (minimum 8 lettres).</div>';
+				document.getElementById("monbtn").disabled = true;
+			} else if (strongRegex.test(pwd.value)) {
+				strength.innerHTML = '<div class="alert alert-success" role="alert">Excellent mot de passe (bon travail) !!!</div>';
+			} else if (mediumRegex.test(pwd.value)) {
+				strength.innerHTML = '<div class="alert alert-warning" role="alert">Mot de passe moyen (rajouter des chiffres et Une majuscule)  !!!</div>';
+			} else {
+				strength.innerHTML = '<div class="alert alert-primary" role="alert">Assez bon mot de passe !!!</div>';
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		function Validate() {
+			var password = document.getElementById("password").value;
+			var confirmPassword = document.getElementById("passwordconfirm").value;
+			if (password != confirmPassword) {
+				//alert("Passwords do not match.");
+				document.getElementById("message").innerHTML = '<div class="alert alert-danger" role="alert"> Mots de passe non identiques </div>';
+				document.getElementById("monbtn").disabled = true;
+				return false;
+			} else {
+				document.getElementById("message").innerHTML = '<div class="alert alert-success" role="alert"> Mots de passe identiques </div>';
+				document.getElementById("monbtn").disabled = false;
+				return true;
+			}
+
+		}
+	</script>
+
+	<!-- footer  -->
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<!-- popper js -->
+	<script th:src="@{/js/popper.min.js}"></script>
+
+	<!-- bootstarp js -->
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+
+	<!-- sidebar menu  -->
+	<script th:src="@{/js/metisMenu.js}"></script>
+
+	<!-- waypoints js -->
+	<script th:src="@{/vendors/count_up/jquery.waypoints.min.js}"></script>
+
+	<!-- waypoints js -->
+
+	<script src="vendors/chartlist/Chart.min.js"></script>
+	<!-- counterup js -->
+	<script th:src="@{/vendors/count_up/jquery.counterup.min.js}"></script>
+
+	<!-- nice select -->
+	<script th:src="@{/vendors/niceselect/js/jquery.nice-select.min.js}"></script>
+
+	<!-- owl carousel -->
+	<script th:src="@{/vendors/owl_carousel/js/owl.carousel.min.js}"></script>
+
+
+	<!-- responsive table -->
+	<script th:src="@{/vendors/datatable/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/vendors/datatable/js/dataTables.responsive.min.js}"></script>
+
+	<script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
+	<script src="vendors/datatable/js/buttons.flash.min.js"></script>
+	<script src="vendors/datatable/js/jszip.min.js"></script>
+	<script src="vendors/datatable/js/pdfmake.min.js"></script>
+	<script src="vendors/datatable/js/vfs_fonts.js"></script>
+	<script src="vendors/datatable/js/buttons.html5.min.js"></script>
+	<script src="vendors/datatable/js/buttons.print.min.js"></script>
+
+	<!-- datepicker  -->
+	<script src="vendors/datepicker/datepicker.js"></script>
+	<script src="vendors/datepicker/datepicker.en.js"></script>
+	<script src="vendors/datepicker/datepicker.custom.js"></script>
+
+	<script src="js/chart.min.js"></script>
+	<script src="vendors/chartjs/roundedBar.min.js"></script>
+
+	<!-- progressbar js -->
+	<script src="vendors/progressbar/jquery.barfiller.js"></script>
+	<!-- tag input -->
+	<script src="vendors/tagsinput/tagsinput.js"></script>
+	<!-- text editor js -->
+	<script src="vendors/text_editor/summernote-bs4.js"></script>
+	<script src="vendors/am_chart/amcharts.js"></script>
+
+	<!-- scrollabe  -->
+	<script th:src="@{/vendors/scroll/perfect-scrollbar.min.js}"></script>
+	<script th:src="@{/vendors/scroll/scrollable-custom.js}"></script>
+
+	<!-- vector map  -->
+	<script src="vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
+	<script src="vendors/vectormap-home/vectormap-world-mill-en.js"></script>
+
+	<!-- apex chrat  -->
+	<script src="vendors/apex_chart/apex-chart2.js"></script>
+	<script src="vendors/apex_chart/apex_dashboard.js"></script>
+
+	<!-- <script src="vendors/echart/echarts.min.js"></script> -->
+
+
+	<script src="vendors/chart_am/core.js"></script>
+	<script src="vendors/chart_am/charts.js"></script>
+	<script src="vendors/chart_am/animated.js"></script>
+	<script src="vendors/chart_am/kelly.js"></script>
+	<script src="vendors/chart_am/chart-custom.js"></script>
+	<!-- custom js -->
+	<script th:src="@{/js/dashboard_init.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
+
+</footer>
+
