@@ -30,15 +30,15 @@ public class ApplicationSecurityconfig extends WebSecurityConfigurerAdapter {
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {
-//		return NoOpPasswordEncoder.getInstance();
+//		return new BCryptPasswordEncoder();
 //	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 
 	@Autowired
 	private UserCaisseService userCaisseService;
