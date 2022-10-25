@@ -154,4 +154,18 @@ public class DepenseService {
 			throw new RuntimeException("Root dir not found in user directory.");
 		}
 	}
+
+	public List<Depense> getHistoriqueDepense(int idCaisse) {
+		return depenseRepository.getHistoDepense(idCaisse);
+	}
+
+	public int getTotalDepense(int idCaisse){
+		Object x=depenseRepository.totalDepense(idCaisse);
+		if(x==null) {
+			return 0;
+		}else {
+			//return (int) depenseRepository.totalDepenseParCaisse(libCaisse);
+			return Integer.valueOf(String.valueOf(x));
+		}
+	}
 }

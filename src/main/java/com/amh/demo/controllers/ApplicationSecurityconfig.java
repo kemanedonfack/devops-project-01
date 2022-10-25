@@ -25,7 +25,7 @@ public class ApplicationSecurityconfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.csrf().disable().authorizeRequests().antMatchers("/login", "/js/**", "/css/**", "/vendors/**", "/img/**")
-				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+				.permitAll().anyRequest().authenticated().and().httpBasic().and().formLogin().loginPage("/login").permitAll().and()
 				.logout().invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
 	}

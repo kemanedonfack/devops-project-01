@@ -43,4 +43,8 @@ public class ApproService {
 		}
 	}
 
+	public List<ApprovisionnementCaisse> getHistoAppro(int idCaisse) {
+		return approvisionnementCaisseRepository.getHistoApprovisionnement(idCaisse);
+	}
+
 }

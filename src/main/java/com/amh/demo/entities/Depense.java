@@ -1,5 +1,7 @@
 package com.amh.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -12,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "gestionnaireCaisse", "caisse", "pieceDeCaisse","personnel" })
 @Entity
 public class Depense implements Serializable{
 	
@@ -38,6 +42,19 @@ public class Depense implements Serializable{
 
 	public Depense() {
 		super();
+	}
+
+	public Depense(String motif, int montant, LocalDateTime dateDepense, String beneficiaire, String imputationComptable, boolean isdeleted, GestionnaireCaisse gestionnaireCaisse, Caisse caisse, Personnel personnel, Set<PieceDeCaisse> pieceDeCaisse) {
+		this.motif = motif;
+		this.montant = montant;
+		this.dateDepense = dateDepense;
+		this.beneficiaire = beneficiaire;
+		this.imputationComptable = imputationComptable;
+		this.isdeleted = isdeleted;
+		this.gestionnaireCaisse = gestionnaireCaisse;
+		this.caisse = caisse;
+		this.personnel = personnel;
+		this.pieceDeCaisse = pieceDeCaisse;
 	}
 
 	public Long getIdDepense() {

@@ -1,5 +1,7 @@
 package com.amh.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -9,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "gestionnaireCaisse", "depenses" })
 @Entity
 public class ApprovisionnementCaisse implements Serializable{
 	

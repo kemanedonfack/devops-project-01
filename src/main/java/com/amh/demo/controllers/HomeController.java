@@ -43,8 +43,8 @@ public class HomeController {
 		int sommeDepenseYde=depenseService.sumDepenseByCaisse("AMH Yaounde");
 		//int sommeDepenseYde=12;
 		
-		int sommeApproDla=approService.getApproCaisseById(1);
-		int sommeApproYde=approService.getApproCaisseById(2);
+		int sommeApproDla=approService.getApproCaisseById(2);
+		int sommeApproYde=approService.getApproCaisseById(1);
 		
 		long nGestionnaire=gestionnaireService.countGestionnaire();
 		long nPersonnel=personnelService.countPersonnel();

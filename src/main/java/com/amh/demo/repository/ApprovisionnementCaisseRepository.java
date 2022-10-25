@@ -16,5 +16,8 @@ public interface ApprovisionnementCaisseRepository extends JpaRepository<Approvi
 	
 	@Query(value = "SELECT a FROM ApprovisionnementCaisse a ORDER BY a.idApprovisionnement DESC")
 	public List<ApprovisionnementCaisse> getAllApprovisionnement();
+
+	@Query(value = "SELECT * FROM approvisionnement_caisse WHERE caisse_id_caisse=:idCaisse",nativeQuery = true)
+	public List<ApprovisionnementCaisse> getHistoApprovisionnement(@Param("idCaisse") int idCaisse);
 	
 }

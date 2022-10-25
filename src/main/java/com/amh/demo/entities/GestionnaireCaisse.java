@@ -33,6 +33,13 @@ public class GestionnaireCaisse implements Serializable{
 		super();
 	}
 
+	public GestionnaireCaisse(String utilisateur, String password, String role, boolean isdeleted) {
+		this.utilisateur = utilisateur;
+		this.password = password;
+		this.role = role;
+		this.isdeleted = isdeleted;
+	}
+
 	public Long getIdGestionnaire() {
 		return idGestionnaire;
 	}
