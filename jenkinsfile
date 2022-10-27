@@ -8,7 +8,7 @@ pipeline {
                 sh 'docker run --name=mysqldb -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane -e MYSQL_DATABASE=db_zencaisse mysql:5.7' 
             }
         }
-        stage('Build zencaisse image') {
+        stage('Package zencaisse') {
             agent {
                 docker {
                     image 'maven:3.8.6-openjdk-18'
@@ -16,7 +16,12 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn package'
+                sh 'mvn -DskipTests=true package'
+            }
+        }
+        stage('Build zencaisse image') {
+            steps {
+                sh 'docker ps -a'
                 sh 'docker build -t zencaisse:1.0 . '
             }
         }
