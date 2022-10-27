@@ -9,16 +9,21 @@ pipeline {
                 sh 'sleep 60'
             }
         }
-        stage('Build') {
+        stage('Build zencaisse image') {
+            steps {
+                sh 'docker build -t zencaisse:1.0 . '
+            }
+        }
+        stage('Build run') {
             agent {
                 docker {
-                    image 'maven:3.8.6-openjdk-18'
-                    args '-v /root/.m2:/root/.m2'
+                    image 'zencaisse:1.0'
+                    args '-v /root/.m2:/root/.m2 -p 8090:8090 --link mysqldb:mysqldb'
                 }
             }
-            steps {
-                sh 'mvn spring-boot:run' 
-            }
+            // steps {
+            //     sh 'mvn spring-boot:run' 
+            // }
         }
     }
 }
