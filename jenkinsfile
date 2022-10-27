@@ -6,7 +6,7 @@ pipeline {
                 sh 'docker stop mysqldb'
                 sh 'docker rm mysqldb'
                 sh 'docker run --name=mysqldb -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane -e MYSQL_DATABASE=db_zencaisse mysql:5.7' 
-                sh 'sleep 90'
+                sh 'sleep 60'
             }
         }
         stage('Build') {
@@ -17,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn test' 
+                sh 'mvn spring-boot:run' 
             }
         }
     }
