@@ -16,13 +16,13 @@ pipeline {
                 }
             }
             steps {
+                sh 'mvn clean'
                 sh 'mvn -DskipTests=true package'
             }
         }
         stage('Build zencaisse image') {
             steps {
                 sh 'docker ps -a'
-                sh 'ls target'
                 sh 'docker build -t zencaisse:1.0 . '
             }
         }
