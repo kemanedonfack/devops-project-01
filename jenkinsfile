@@ -10,7 +10,14 @@ pipeline {
             }
         }
         stage('Build zencaisse image') {
+            agent {
+                docker {
+                    image 'maven:3.8.6-openjdk-18'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
+                sh 'mvn package'
                 sh 'docker build -t zencaisse:1.0 . '
             }
         }
