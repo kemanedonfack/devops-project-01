@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Launch MySQL') { 
              steps {
-                sh 'docker run --name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse mysql:5.7' 
+                sh 'docker run --name=mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane -e MYSQL_DATABASE=db_zencaisse mysql:5.7' 
             }
         }
         stage('Build') {
