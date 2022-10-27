@@ -10,8 +10,6 @@ pipeline {
             }
              steps {
                 sh 'mysql --version' 
-                sh 'mysql -u root -p kemane' 
-                sh 'show databases' 
             }
         }
         stage('Build') {
