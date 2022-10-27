@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mysql:5.7'
-            args '-d --name=mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane MYSQL_DATABASE=db_zencaisse'
+            args '--name=mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane MYSQL_DATABASE=db_zencaisse'
         }
     }
     stages {
