@@ -21,9 +21,9 @@ pipeline {
                     args '-v /root/.m2:/root/.m2 -p 8090:8090 --link mysqldb:mysqldb'
                 }
             }
-            // steps {
-            //     sh 'mvn spring-boot:run' 
-            // }
+            steps {
+                sh 'mvn spring-boot:run' 
+            }
         }
     }
 }
