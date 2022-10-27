@@ -2,14 +2,8 @@ pipeline {
     agent any
     stages {
         stage('Launch MySQL') { 
-            agent {
-                docker {
-                    image 'mysql:5.7'
-                    args ' --name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse'
-                }
-            }
              steps {
-                sh 'mysql --version' 
+                sh 'docker run --name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse mysql:5.7' 
             }
         }
         stage('Build') {
