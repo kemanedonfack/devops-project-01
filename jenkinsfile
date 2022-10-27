@@ -1,14 +1,23 @@
 pipeline {
-    agent {
-        docker {
-            image 'mysql:5.7'
-            args '--name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse'
-        }
-    }
+    agent any
     stages {
-        stage('Test') { 
+        stage('Launch MySQL') { 
+            agent {
+                docker {
+                    image 'mysql:5.7'
+                    args ' --name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse'
+                }
+            }
+        }
+        stage('Build') {
+            agent {
+                docker {
+                    image 'maven:3.8.6-openjdk-18'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
-                sh 'mysql --version' 
+                sh 'mvn test' 
             }
         }
     }
