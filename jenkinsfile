@@ -8,20 +8,20 @@ pipeline {
                     args '-d --name=mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=kemane MYSQL_DATABASE=db_zencaisse'
                 }
             }
-            steps { 
-                sh 'sleep 100'
-            }
+            // steps { 
+            //     sh 'sleep 100'
+            // }
         }
-        stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3.8.6-openjdk-18'
-                    args '-v /root/.m2:/root/.m2'
-                }
-            }
-            steps {
-                sh 'mvn test' 
-            }
-        }
+        // stage('Build') {
+        //     agent {
+        //         docker {
+        //             image 'maven:3.8.6-openjdk-18'
+        //             args '-v /root/.m2:/root/.m2'
+        //         }
+        //     }
+        //     steps {
+        //         sh 'mvn test' 
+        //     }
+        // }
     }
 }
