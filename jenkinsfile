@@ -8,6 +8,15 @@ pipeline {
                     args ' --name=mysqldb -p 3306:3306 -e mysql_root_password=kemane -e mysql_database=db_zencaisse'
                 }
             }
+             steps {
+                sh 'mysql --version' 
+            }
+            steps {
+                sh 'mysql -u root -p kemane' 
+            }
+            steps {
+                sh 'show databases' 
+            }
         }
         stage('Build') {
             agent {
