@@ -15,6 +15,8 @@ pipeline {
         }
         stage('Build zencaisse image') {
             steps {
+                sh 'ls'
+                sh 'ls target'
                 sh 'docker build -t zencaisse:1.0 . '
             }
         }
