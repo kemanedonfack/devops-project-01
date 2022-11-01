@@ -1,5 +1,5 @@
 FROM openjdk:11
-ARG JAR_FILE=target/zencaisse-2.0.1.jar
+ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 EXPOSE 8090
 ENTRYPOINT ["java", "-jar", "/app.jar"]
