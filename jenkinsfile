@@ -10,8 +10,7 @@ pipeline {
             }
             steps {
                 sh 'mvn clean'
-                sh 'mvn -DskipTests=true build'
-                sh 'mvn -DskipTests=true package'
+                sh 'mvn install -DskipTests'
             }
         }
         stage('Build zencaisse image') {
