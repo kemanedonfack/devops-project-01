@@ -22,7 +22,7 @@ pipeline {
         stage('Push image') {
             steps {
                 sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:$BUILD_NUMBER'
-                sh 'docker image tag zencaisse:latest lugar2020/zencaisse:latest'
+                sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:latest'
                 sh 'docker image push --all-tags lugar2020/zencaisse'
             }
         }
