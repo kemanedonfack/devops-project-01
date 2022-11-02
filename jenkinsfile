@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'ls target'
-                sh 'docker build -t zencaisse:1.0 . '
+                sh 'docker build -t zencaisse:$BUILD_NUMBER . '
             }
         }
 
