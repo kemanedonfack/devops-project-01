@@ -4,6 +4,9 @@ pipeline {
     tools{
         maven '3.8.6'
     }
+    environment{
+        dockercredentials=credentials('dockerhubid') 
+    }
     stages {
         stage('Build & Package') {
             steps {
@@ -21,9 +24,9 @@ pipeline {
 
         stage('Push image') {
             steps {
+                sh 'echo $dockercredentials_PSW | docker login -u $dockercredentials_USR --password-stdin '
                 sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:$BUILD_NUMBER'
-                sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:latest'
-                sh 'docker image push --all-tags lugar2020/zencaisse'
+                sh 'docker image push lugar2020/zencaisse:$BUILD_NUMBER'
             }
         }
     }
