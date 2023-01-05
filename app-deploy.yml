@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deploy
+  labels:
+   app: backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+      - name: backend-container
+        image: lugar2020/zencaisse
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8090
+        env:
+        - name: DB_HOST
+          value: mysqldb
+        - name: DB_NAME
+          value: db_zencaisse
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          value: kemane
+        - name: APP_PORT
+          value: '8090'
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-backend
+  labels:
+    name: backend-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8090
+      targetPort: 8090
+      nodePort: 30006
+  selector:
+    app: backend-app
