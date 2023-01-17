@@ -18,7 +18,8 @@ pipeline {
         stage('stop and delete last version') {
             steps {
                 sh 'docker compose down'   
-                sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force'
+                sh 'docker rmi zencaisse || echo "image_name not found"'
+                //sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force'
             }
         }
 
