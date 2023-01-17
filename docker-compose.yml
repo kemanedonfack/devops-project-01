@@ -16,9 +16,9 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: pma
     links:
-      - db
+      - mysqldb
     environment:
-      PMA_HOST: db
+      PMA_HOST: mysqldb
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always
