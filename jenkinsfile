@@ -18,8 +18,8 @@ pipeline {
         stage('stop and delete last version') {
             steps {
                 sh 'docker compose down'   
-                sh 'docker rmi zencaisse || echo "success : image delete"'
-                //sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force'
+                //sh 'docker rmi zencaisse || echo "success : image delete"'
+                sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force || echo "success : image delete"'
             }
         }
 
@@ -45,7 +45,7 @@ pipeline {
                 sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
                      sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
                     '''
-                sh 'docker compose up'   
+                sh 'docker compose up -d'   
             }
         }
     }
