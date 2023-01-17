@@ -14,6 +14,14 @@ pipeline {
                 sh 'mvn install -DskipTests'
             }
         }
+        
+        stage('stop and delete last version') {
+            steps {
+                sh 'docker compose down'   
+                sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force'
+            }
+        }
+
         stage('Build image') {
             steps {
                 sh 'ls'
@@ -22,11 +30,21 @@ pipeline {
             }
         }
 
-        stage('Push image') {
+        // stage('Push image') {
+        //     steps {
+        //         sh 'echo $dockercredentials_PSW | docker login -u $dockercredentials_USR --password-stdin '
+        //         sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:$BUILD_NUMBER'
+        //         sh 'docker image push lugar2020/zencaisse:$BUILD_NUMBER'
+        //     }
+        // }
+        
+
+        stage('Local deployment') {
             steps {
-                sh 'echo $dockercredentials_PSW | docker login -u $dockercredentials_USR --password-stdin '
-                sh 'docker image tag zencaisse:$BUILD_NUMBER lugar2020/zencaisse:$BUILD_NUMBER'
-                sh 'docker image push lugar2020/zencaisse:$BUILD_NUMBER'
+                sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
+                     sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
+                    '''
+                sh 'docker compose up'   
             }
         }
     }

@@ -13,7 +13,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   zencaisse:
-    image: lugar2020/zencaisse
+    image: zencaisse:docker_tag
     restart: always
     ports:
      - 8090:8090
