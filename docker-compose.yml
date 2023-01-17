@@ -9,6 +9,7 @@ services:
       MYSQL_PASSWORD: kemane
       MYSQL_ROOT_PASSWORD: kemane
       MYSQL_DATABASE: db_zencaisse
+    restart: always
     volumes:
       - mysql-data:/var/lib/mysql
   
