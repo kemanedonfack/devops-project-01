@@ -31,7 +31,7 @@ pipeline {
 //                 sh 'ls target'
 //                 sh 'docker build -t zencaisse:$BUILD_NUMBER . '
 //             }
-        }
+//         }
 
         // stage('Push image') {
         //     steps {
