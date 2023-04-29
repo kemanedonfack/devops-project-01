@@ -1,34 +1,36 @@
 pipeline {
     agent any
     
-    tools{
-        maven '3.8.6'
-    }
-    environment{
-        dockercredentials=credentials('dockerhubid') 
-    }
+//     environment{
+//         dockercredentials=credentials('dockerhubid') 
+//     }
     stages {
         stage('Build & Package') {
             steps {
-                sh 'mvn clean'
-                sh 'mvn install -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
         
-        stage('stop and delete last version') {
+        stage('Unit test') {
             steps {
-                sh 'docker compose down'   
-                //sh 'docker rmi zencaisse || echo "success : image delete"'
-                sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force || echo "success : image delete"'
+                sh 'mvn test'
             }
         }
+        
+//         stage('stop and delete last version') {
+//             steps {
+//                 sh 'docker compose down'   
+//                 //sh 'docker rmi zencaisse || echo "success : image delete"'
+//                 sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force || echo "success : image delete"'
+//             }
+//         }
 
-        stage('Build image') {
-            steps {
-                sh 'ls'
-                sh 'ls target'
-                sh 'docker build -t zencaisse:$BUILD_NUMBER . '
-            }
+//         stage('Build image') {
+//             steps {
+//                 sh 'ls'
+//                 sh 'ls target'
+//                 sh 'docker build -t zencaisse:$BUILD_NUMBER . '
+//             }
         }
 
         // stage('Push image') {
@@ -40,13 +42,13 @@ pipeline {
         // }
         
 
-        stage('Local deployment') {
-            steps {
-                sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
-                     sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
-                    '''
-                sh 'docker compose up -d'   
-            }
-        }
+//         stage('Local deployment') {
+//             steps {
+//                 sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
+//                      sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
+//                     '''
+//                 sh 'docker compose up -d'   
+//             }
+//         }
     }
 }
