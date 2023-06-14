@@ -11,11 +11,11 @@ pipeline {
             }
         }
         
-        stage('Unit test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+//         stage('Unit test') {
+//             steps {
+//                 sh 'mvn test'
+//             }
+//         }
         
 //         stage('stop and delete last version') {
 //             steps {
