@@ -25,13 +25,11 @@ pipeline {
 //             }
 //         }
 
-//         stage('Build image') {
-//             steps {
-//                 sh 'ls'
-//                 sh 'ls target'
-//                 sh 'docker build -t zencaisse:$BUILD_NUMBER . '
-//             }
-//         }
+         stage('Build image') {
+             steps {
+                 sh 'docker build -t zencaisse:$BUILD_NUMBER . '
+             }
+         }
 
         // stage('Push image') {
         //     steps {
