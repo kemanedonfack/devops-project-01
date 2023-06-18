@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-//     environment{
-//         dockercredentials=credentials('dockerhubid') 
-//     }
+    environment{
+        dockercredentials=credentials('dockerhubid') 
+    }
     stages {
         stage('Build & Package') {
             steps {
@@ -11,19 +11,19 @@ pipeline {
             }
         }
         
-//         stage('Unit test') {
-//             steps {
-//                 sh 'mvn test'
-//             }
-//         }
+        stage('Unit test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
         
-//         stage('stop and delete last version') {
-//             steps {
-//                 sh 'docker compose down'   
-//                 //sh 'docker rmi zencaisse || echo "success : image delete"'
-//                 sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force || echo "success : image delete"'
-//             }
-//         }
+        stage('stop and delete last version') {
+            steps {
+                sh 'docker compose down'   
+                //sh 'docker rmi zencaisse || echo "success : image delete"'
+                sh 'docker rmi docker rmi $(docker images | grep zencaisse) --force || echo "success : image delete"'
+            }
+        }
 
          stage('Build image') {
              steps {
@@ -40,13 +40,13 @@ pipeline {
         // }
         
 
-//         stage('Local deployment') {
-//             steps {
-//                 sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
-//                      sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
-//                     '''
-//                 sh 'docker compose up -d'   
-//             }
-//         }
+        stage('Local deployment') {
+            steps {
+                sh ''' final_tag=$(echo $BUILD_NUMBER | tr -d ' ') 
+                     sed -i "s/docker_tag/$final_tag/g" docker-compose.yml
+                    '''
+                sh 'docker compose up -d'   
+            }
+        }
     }
 }
